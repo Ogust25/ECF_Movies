@@ -18,7 +18,7 @@ if ($file !==FALSE) {
         $id_year = $req_get_id_year->fetch(PDO::FETCH_ASSOC);
 
         $req_movies->bindValue(':title', $row[0], PDO::PARAM_STR);
-        $req_movies->bindValue(':year_movie', $id_year, PDO::PARAM_STR);
+        $req_movies->bindValue(':release', $id_year, PDO::PARAM_INT);
         $req_movies->execute();
     }
 }
