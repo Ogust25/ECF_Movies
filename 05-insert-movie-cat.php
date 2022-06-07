@@ -9,7 +9,7 @@ $req_select_id_cat = "SELECT id FROM categories WHERE category = :cat";
 
 $req_get_id_movie = $db->prepare($req_select_id_movie);
 $req_get_id_cat = $db->prepare($req_select_id_cat);
-$req_movie_cat = $db->prepare($req_insert_movies_categories);
+$req_movie_cat = $db->prepare($req_insert_movies);
 
 $file = fopen('./film.csv','r');
 if ($file !==FALSE) {
@@ -21,13 +21,13 @@ if ($file !==FALSE) {
 
         $one_cat = explode (",", $row[2]); 
         for ($i=0; $i < count($one_cat) ; $i++) { 
-            $req_get_id_cat->bindValue(':cat', $one_cat[i], PDO::PARAM_STR);
+            $req_get_id_cat->bindValue(':cat', $one_cat[$i], PDO::PARAM_STR);
             $req_get_id_cat->execute();
             $id_cat = $req_get_id_cat->fetch(PDO::FETCH_ASSOC);
             
             $req_movie_cat->bindValue(':id_cat', $id_cat["id"], PDO::PARAM_INT);
-            $req_movie_cat->bindValue(':id_movie', $id_movie["id"], PDO::PARAM_INT);
+            $req_movie_cat->bindValue(':id_movies', $id_movie["id"], PDO::PARAM_INT);
             $req_movie_cat->execute();
-        }
+        } 
     }
 }
