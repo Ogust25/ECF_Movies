@@ -10,4 +10,3 @@ $allInOne = $db->prepare('SELECT infos_movies.title, release_years.release_year,
                         INNER JOIN directors ON directors.id = directors_has_infos_movies.directors_id');
 $allInOne->execute();
 $res_allInOne = $allInOne->fetchAll(PDO::FETCH_ASSOC);
-var_dump($res_allInOne);

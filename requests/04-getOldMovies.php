@@ -9,4 +9,3 @@ $oldMovie = $db->prepare('SELECT infos_movies.title, release_year FROM infos_mov
                         WHERE release_year < 2002');
 $oldMovie->execute();
 $res_oldMovie = $oldMovie->fetchAll(PDO::FETCH_ASSOC);
-var_dump($res_oldMovie);
