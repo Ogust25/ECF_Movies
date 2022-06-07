@@ -2,7 +2,7 @@
 
 require_once('connect.php');
 
-$req_insert_movies = "INSERT INTO infos_movies (`title`, `release_years_id`) SELECT * FROM (SELECT :title AS `title`, :release AS release_years_id) AS temp WHERE NOT EXISTS ( SELECT `title` FROM infos_movies WHERE `title` = :title )";
+$req_insert_movies = "INSERT INTO infos_movies (`title`, `release_years_id`) VALUES (:title, :release)";
 
 $req_select_id_year = "SELECT id FROM `release_years` WHERE release_year = :year_movie";
 
